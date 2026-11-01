@@ -1,0 +1,20 @@
+# Build Maven
+target/
+
+# Arquivos compilados Java
+*.class
+out/
+bin/
+build/
+
+# Maven wrapper (mantém os scripts e a config, ignora o jar baixado se houver)
+!.mvn/wrapper/maven-wrapper.properties
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Sistema
+.DS_Store
+Thumbs.db

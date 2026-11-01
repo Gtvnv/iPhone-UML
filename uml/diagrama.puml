@@ -1,0 +1,70 @@
+@startuml iPhone
+title Modelagem UML do iPhone - Reprodutor Musical, Telefone e Navegador
+
+enum EstadoReproducao {
+  PARADO
+  TOCANDO
+  PAUSADO
+}
+
+interface ReprodutorMusical {
+  + tocar() : void
+  + pausar() : void
+  + selecionarMusica(musica : String) : void
+  + getEstadoReproducao() : EstadoReproducao
+  + getMusicaAtual() : String
+}
+
+interface AparelhoTelefonico {
+  + ligar(numero : String) : void
+  + atender() : void
+  + encerrarChamada() : void
+  + iniciarCorreioVoz() : void
+  + emChamada() : boolean
+  + getNumeroEmChamada() : String
+}
+
+interface NavegadorInternet {
+  + exibirPagina(url : String) : void
+  + novaAba() : void
+  + atualizarPagina() : void
+  + getPaginaAtual() : String
+  + getQuantidadeAbas() : int
+}
+
+class IPhone {
+  - modelo : String
+  - musicaAtual : String
+  - estadoReproducao : EstadoReproducao
+  - numeroEmChamada : String
+  - paginaAtual : String
+  - quantidadeAbas : int
+  + IPhone(modelo : String)
+  + getModelo() : String
+  .. ReprodutorMusical ..
+  + tocar() : void
+  + pausar() : void
+  + selecionarMusica(musica : String) : void
+  + getEstadoReproducao() : EstadoReproducao
+  + getMusicaAtual() : String
+  .. AparelhoTelefonico ..
+  + ligar(numero : String) : void
+  + atender() : void
+  + encerrarChamada() : void
+  + iniciarCorreioVoz() : void
+  + emChamada() : boolean
+  + getNumeroEmChamada() : String
+  .. NavegadorInternet ..
+  + exibirPagina(url : String) : void
+  + novaAba() : void
+  + atualizarPagina() : void
+  + getPaginaAtual() : String
+  + getQuantidadeAbas() : int
+}
+
+ReprodutorMusical <|.. IPhone
+AparelhoTelefonico <|.. IPhone
+NavegadorInternet <|.. IPhone
+IPhone --> EstadoReproducao
+
+@enduml
